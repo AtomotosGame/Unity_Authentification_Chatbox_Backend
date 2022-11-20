@@ -47,7 +47,7 @@ module.exports = app => {
             return;
         }
         
-        var userAccount = await Account.findOne({eamil : RUusername});
+        var userAccount = await Account.findOne({email : RUusername});
         
         if(userAccount == null)
         {
@@ -65,6 +65,7 @@ module.exports = app => {
                 gem : 500,
                 maxgold : 1000000,
                 maxlixir : 10000000,
+                ownedbuildings: [{id: 1, pos: [{x: 21, y:21}]}],
                 lastAuthentication : Date.now()
             })
             await NewAccount.save();
@@ -102,5 +103,61 @@ module.exports = app => {
         }
     });
     
+    //Create Account
+    app.post('/account/update', async(req, res) => {
+    
+        const { 
+            id,
+            planername,
+            playerlevel,
+            level,
+            gold,
+            elixir,
+            blackelixir,
+            gem,
+            maxgold,
+            maxlixir,
+            ownedbuildings
+        } = req.body;
+        
+        if(id == null)
+        {
+            res.send("Invalid Credentials!");
+            return;
+        }
+
+        if (planername !== null)
+            await Account.findOneAndUpdate({_id : id},{planername: planername});
+
+        if (playerlevel !== null)
+            await Account.findOneAndUpdate({_id : id},{playerlevel: playerlevel});
+        
+        if (level !== null)
+            await Account.findOneAndUpdate({_id : id},{level: level});
+
+        if (gold !== null)
+            await Account.findOneAndUpdate({_id : id},{gold: gold});
+        
+        if (elixir !== null)
+            await Account.findOneAndUpdate({_id : id},{elixir: elixir});
+
+        if (blackelixir !== null)
+            await Account.findOneAndUpdate({_id : id},{blackelixir: blackelixir});
+        
+        if (gem !== null)
+            await Account.findOneAndUpdate({_id : id},{gem: gem});
+
+        if (maxgold !== null)
+            await Account.findOneAndUpdate({_id : id},{maxgold: maxgold});
+        
+        if (maxlixir !== null)
+            await Account.findOneAndUpdate({_id : id},{maxlixir: maxlixir});
+
+        if (ownedbuildings !== null)
+            await Account.findOneAndUpdate({_id : id},{ownedbuildings: ownedbuildings});
+        
+        res.send("Update successufully");
+        
+    });
 }
 

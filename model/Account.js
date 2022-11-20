@@ -13,7 +13,7 @@ blackelixir: Number,
 gem: Number,
 maxgold: Number,
 maxlixir: Number,
-
+ownedbuildings: [],
 lastAuthentication: Date,
 });
 
