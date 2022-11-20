@@ -2,23 +2,27 @@ const mongoose = require('mongoose');
 const Account = mongoose.model('accounts');
 
 module.exports = app => {
-    //Routes
+    //Routes test
     app.get('/', (req, res) => {
-        res.send("login");
+        res.send("server is working");
     });
 
+    //Login
     app.post('/account/login', async(req, res) => {
     
-    const {RUusername, RPassword} = req.body;
+    const {REmail, RPassword} = req.body; // get email & password
     
-    if(RUusername == null || RPassword == null)
+    // validation
+    if(REmail == null || RPassword == null)
     {
         res.send("Invalid Credentials!");
         return;
     }
     
-    var userAccount = await Account.findOne({email : RUusername});
+    //Detect duplicate accounts that same email.
+    var userAccount = await Account.findOne({email : REmail});
     
+    // there is no repetition account.
     if(userAccount != null)
     {
         if(RPassword == userAccount.password){
@@ -31,6 +35,7 @@ module.exports = app => {
         }
     }
     
+    // there is repetition account
     res.send("Invalid Credentials");
     
     });
@@ -39,22 +44,23 @@ module.exports = app => {
     //Create Account
     app.post('/account/Create', async(req, res) => {
     
-        const {RUusername, RPassword} = req.body;
+        const {REmail, RPassword} = req.body;
         
-        if(RUusername == null || RPassword == null)
+        if(REmail == null || RPassword == null)
         {
             res.send("Invalid Credentials!");
             return;
         }
         
-        var userAccount = await Account.findOne({email : RUusername});
+        var userAccount = await Account.findOne({email : REmail});
         
         if(userAccount == null)
         {
             console.log("create New Account");
         
+            // init  info
             var NewAccount = new Account({
-                email : RUusername,
+                email : REmail,
                 password : RPassword,
                 planername : "",
                 playerlevel : 1,
@@ -68,6 +74,7 @@ module.exports = app => {
                 ownedbuildings: [{id: 1, pos: [{x: 21, y:21}]}],
                 lastAuthentication : Date.now()
             })
+
             await NewAccount.save();
             res.send(NewAccount);
             return;
@@ -81,7 +88,7 @@ module.exports = app => {
     //Get Info
     app.get('/account/info', async(req, res) => {
     
-        const {id} = req.query;
+        const {id} = req.query; //get parameter
         
         if(id == null)
         {
@@ -157,7 +164,7 @@ module.exports = app => {
             await Account.findOneAndUpdate({_id : id},{ownedbuildings: ownedbuildings});
         
         res.send("Update successufully");
-        
+
     });
 }
 
