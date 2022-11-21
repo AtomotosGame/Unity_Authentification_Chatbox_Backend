@@ -110,7 +110,7 @@ module.exports = app => {
         }
     });
     
-    //Create Account
+    //Update Account
     app.post('/account/update', async(req, res) => {
     
         const { 
