@@ -67,7 +67,7 @@ module.exports = app => {
                 level : 1,
                 Gold : 1000,
                 Elixir : 1000,
-                NlackElixir : 1000,
+                BlackElixir : 1000,
                 Gem : 500,
                 maxGold : 1000000,
                 maxElixir : 10000000,
