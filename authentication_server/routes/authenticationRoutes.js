@@ -65,12 +65,13 @@ module.exports = app => {
                 planerName : "",
                 playerLevel : 1,
                 level : 1,
-                gold : 1000,
-                elixir : 1000,
-                blackElixir : 1000,
-                gem : 500,
+                Gold : 1000,
+                Elixir : 1000,
+                NlackElixir : 1000,
+                Gem : 500,
                 maxGold : 1000000,
                 maxElixir : 10000000,
+                maxBlackElixir : 10000000,
                 ownedBuildings: [{id: 1, pos: [{x: 21, y:21}]}],
                 lastAuthentication : Date.now()
             })
@@ -118,12 +119,13 @@ module.exports = app => {
             planerName,
             playerLevel,
             level,
-            gold,
-            elixir,
-            blackElixir,
-            gem,
+            Gold,
+            Elixir,
+            BlackElixir,
+            Gem,
             maxGold,
             maxElixir,
+            maxBlackElixir,
             ownedBuildings
         } = req.body;
         
@@ -142,23 +144,26 @@ module.exports = app => {
         if (level !== null)
             await Account.findOneAndUpdate({_id : id},{level: level});
 
-        if (gold !== null)
-            await Account.findOneAndUpdate({_id : id},{gold: gold});
+        if (Gold !== null)
+            await Account.findOneAndUpdate({_id : id},{Gold: Gold});
         
-        if (elixir !== null)
-            await Account.findOneAndUpdate({_id : id},{elixir: elixir});
+        if (Elixir !== null)
+            await Account.findOneAndUpdate({_id : id},{Elixir: Elixir});
 
-        if (blackElixir !== null)
-            await Account.findOneAndUpdate({_id : id},{blackElixir: blackElixir});
+        if (BlackElixir !== null)
+            await Account.findOneAndUpdate({_id : id},{BlackElixir: BlackElixir});
         
-        if (gem !== null)
-            await Account.findOneAndUpdate({_id : id},{gem: gem});
+        if (Gem !== null)
+            await Account.findOneAndUpdate({_id : id},{Gem: Gem});
 
         if (maxGold !== null)
             await Account.findOneAndUpdate({_id : id},{maxGold: maxGold});
         
         if (maxElixir !== null)
             await Account.findOneAndUpdate({_id : id},{maxElixir: maxElixir});
+
+        if (maxBlackElixir !== null)
+            await Account.findOneAndUpdate({_id : id},{maxBlackElixir: maxBlackElixir});
 
         if (ownedBuildings !== null)
             await Account.findOneAndUpdate({_id : id},{ownedBuildings: ownedBuildings});
