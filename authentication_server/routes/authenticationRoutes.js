@@ -62,16 +62,16 @@ module.exports = app => {
             var NewAccount = new Account({
                 email : REmail,
                 password : RPassword,
-                planername : "",
-                playerlevel : 1,
+                planerName : "",
+                playerLevel : 1,
                 level : 1,
                 gold : 1000,
                 elixir : 1000,
-                blackelixir : 1000,
+                blackElixir : 1000,
                 gem : 500,
-                maxgold : 1000000,
-                maxlixir : 10000000,
-                ownedbuildings: [{id: 1, pos: [{x: 21, y:21}]}],
+                maxGold : 1000000,
+                maxElixir : 10000000,
+                ownedBuildings: [{id: 1, pos: [{x: 21, y:21}]}],
                 lastAuthentication : Date.now()
             })
 
@@ -115,16 +115,16 @@ module.exports = app => {
     
         const { 
             id,
-            planername,
-            playerlevel,
+            planerName,
+            playerLevel,
             level,
             gold,
             elixir,
-            blackelixir,
+            blackElixir,
             gem,
-            maxgold,
-            maxlixir,
-            ownedbuildings
+            maxGold,
+            maxElixir,
+            ownedBuildings
         } = req.body;
         
         if(id == null)
@@ -133,11 +133,11 @@ module.exports = app => {
             return;
         }
 
-        if (planername !== null)
-            await Account.findOneAndUpdate({_id : id},{planername: planername});
+        if (planerName !== null)
+            await Account.findOneAndUpdate({_id : id},{planerName: planerName});
 
-        if (playerlevel !== null)
-            await Account.findOneAndUpdate({_id : id},{playerlevel: playerlevel});
+        if (playerLevel !== null)
+            await Account.findOneAndUpdate({_id : id},{playerLevel: playerLevel});
         
         if (level !== null)
             await Account.findOneAndUpdate({_id : id},{level: level});
@@ -148,20 +148,20 @@ module.exports = app => {
         if (elixir !== null)
             await Account.findOneAndUpdate({_id : id},{elixir: elixir});
 
-        if (blackelixir !== null)
-            await Account.findOneAndUpdate({_id : id},{blackelixir: blackelixir});
+        if (blackElixir !== null)
+            await Account.findOneAndUpdate({_id : id},{blackElixir: blackElixir});
         
         if (gem !== null)
             await Account.findOneAndUpdate({_id : id},{gem: gem});
 
-        if (maxgold !== null)
-            await Account.findOneAndUpdate({_id : id},{maxgold: maxgold});
+        if (maxGold !== null)
+            await Account.findOneAndUpdate({_id : id},{maxGold: maxGold});
         
-        if (maxlixir !== null)
-            await Account.findOneAndUpdate({_id : id},{maxlixir: maxlixir});
+        if (maxElixir !== null)
+            await Account.findOneAndUpdate({_id : id},{maxElixir: maxElixir});
 
-        if (ownedbuildings !== null)
-            await Account.findOneAndUpdate({_id : id},{ownedbuildings: ownedbuildings});
+        if (ownedBuildings !== null)
+            await Account.findOneAndUpdate({_id : id},{ownedBuildings: ownedBuildings});
         
         res.send("Update successufully");
 

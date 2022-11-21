@@ -4,16 +4,16 @@ const {Schema} = mongoose;
 const accountSchema = new Schema({
     email: String,
     password: String,
-    planername: String,
-    playerlevel: Number,
+    playerName: String,
+    playerLevel: Number,
     level: Number,
     gold: Number,
     elixir: Number,
-    blackelixir: Number,
+    blackElixir: Number,
     gem: Number,
-    maxgold: Number,
-    maxlixir: Number,
-    ownedbuildings: [],
+    maxGold: Number,
+    maxElixir: Number,
+    ownedBuildings: [],
     lastAuthentication: Date,
 });
 
