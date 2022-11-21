@@ -62,7 +62,7 @@ module.exports = app => {
             var NewAccount = new Account({
                 email : REmail,
                 password : RPassword,
-                planerName : "",
+                playerName : "",
                 playerLevel : 1,
                 level : 1,
                 Gold : 1000,
@@ -116,7 +116,7 @@ module.exports = app => {
     
         const { 
             id,
-            planerName,
+            playerName,
             playerLevel,
             level,
             Gold,
@@ -135,8 +135,8 @@ module.exports = app => {
             return;
         }
 
-        if (planerName !== null)
-            await Account.findOneAndUpdate({_id : id},{planerName: planerName});
+        if (playerName !== null)
+            await Account.findOneAndUpdate({_id : id},{playerName: playerName});
 
         if (playerLevel !== null)
             await Account.findOneAndUpdate({_id : id},{playerLevel: playerLevel});
