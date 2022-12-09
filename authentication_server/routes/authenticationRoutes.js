@@ -70,8 +70,8 @@ module.exports = app => {
                 BlackElixir : 1000,
                 Gem : 500,
                 maxGold : 1000000,
-                maxElixir : 10000000,
-                maxBlackElixir : 10000000,
+                maxElixir : 1000000,
+                maxBlackElixir : 1000000,
                 ownedBuildings: [{id: 1, pos: [{x: 21, y:21}]}],
                 lastAuthentication : Date.now()
             })
