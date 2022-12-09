@@ -32,7 +32,7 @@ var s = net.Server(function (socket) {
 	});
 });
 
-s.listen(80);
+s.listen(8000);
 
 //* Handle ctrl+c event
 process.on('SIGINT', function () {
